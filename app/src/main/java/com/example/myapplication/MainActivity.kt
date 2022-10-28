@@ -124,6 +124,9 @@ class MainActivity : ComponentActivity() {
             }
     }
 
+    /**
+     * It will pass this test in my environment.
+     */
     private fun passedTest() {
         val settingsClient: SettingsClient = LocationServices.getSettingsClient(this)
         settingsClient
