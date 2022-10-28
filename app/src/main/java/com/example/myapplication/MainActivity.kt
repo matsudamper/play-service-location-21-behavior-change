@@ -52,6 +52,12 @@ class MainActivity : ComponentActivity() {
                         }) {
                             Text(text = "Presented test")
                         }
+                        Spacer(modifier = Modifier.height(12.dp))
+                        Button(onClick = {
+                            passedTest()
+                        }) {
+                            Text(text = "passed test in my environment")
+                        }
                     }
                 }
             }
@@ -114,6 +120,30 @@ class MainActivity : ComponentActivity() {
                     val apiException = e as ResolvableApiException
                     assertThat(apiException.status.statusCode).isEqualTo(ConnectionResult.RESOLUTION_REQUIRED)
                     assertThat(apiException.resolution).isNotNull
+                }
+            }
+    }
+
+    private fun passedTest() {
+        val settingsClient: SettingsClient = LocationServices.getSettingsClient(this)
+        settingsClient
+            .checkLocationSettings(
+                LocationSettingsRequest.Builder()
+                    .addLocationRequest(
+                        LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 0).build()
+                    )
+                    .build()
+            )
+            .addOnCompleteListener { task ->
+                try {
+                    task.getResult(ApiException::class.java)
+                    fail()
+                } catch (e: ApiException) {
+                    assertThat(e).isNotInstanceOf(ResolvableApiException::class.java)
+                    assertThat(task.exception).isEqualTo(e)
+                    val apiException = e/* as ResolvableApiException */
+                    assertThat(apiException.status.statusCode).isEqualTo(ConnectionResult.RESOLUTION_REQUIRED)
+                    // assertThat(apiException.resolution).isNotNull
                 }
             }
     }
