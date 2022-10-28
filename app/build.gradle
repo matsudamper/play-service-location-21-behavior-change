@@ -57,4 +57,7 @@ dependencies {
 
     implementation "com.google.android.gms:play-services-location:21.0.0"
 //    implementation "com.google.android.gms:play-services-location:20.0.0" // no problem
+
+    implementation 'junit:junit:4.13.2'
+    implementation 'org.assertj:assertj-core:3.23.1'
 }
