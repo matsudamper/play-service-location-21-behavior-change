@@ -146,7 +146,7 @@ class MainActivity : ComponentActivity() {
                     assertThat(task.exception).isEqualTo(e)
                     val apiException = e/* as ResolvableApiException */
                     assertThat(apiException.status.statusCode).isEqualTo(ConnectionResult.RESOLUTION_REQUIRED)
-                    // assertThat(apiException.resolution).isNotNull
+                    assertThat(apiException.status.resolution).isNotNull
                 }
             }
     }
