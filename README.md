@@ -1,6 +1,6 @@
 # play-service-location-21-behavior-change
 
-# Small Sample
+# Small Sample Code(debug build)
 https://github.com/matsudamper/play-service-location-21-behavior-change/blob/d70d6c38551e4f6bcf249662fbd7f28cefbb7023/app/build.gradle#L58-L59
 
 ```
@@ -22,7 +22,7 @@ Caused by: com.google.android.gms.common.api.ApiException: 6: RESOLUTION_REQUIRE
   at android.os.Binder.execTransact(Binder.java:1244)
 ```
 
-# Production Error
+# Production Code Error(debug build)
 ```
 Unable to update local snapshot for com.google.android.libraries.consentverifier#me.retty, may result in stale flags.
 java.util.concurrent.ExecutionException: java.lang.SecurityException: GoogleCertificatesRslt: not allowed: pkg=<pkg>, sha256=[<sha256>], atk=false, ver=<ver_code>.true (go/gsrlt)
